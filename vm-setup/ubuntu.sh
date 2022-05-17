@@ -39,7 +39,6 @@ sudo apt install -y libzmq3-dev
 
 sudo apt-get install -y python3-pip
 sudo apt-get install -y python3.9-dev
-sudo apt -y autoremove
 
 sudo apt install -y python3.9-venv
 python3.9 -m pip install --user virtualenv
@@ -49,7 +48,9 @@ mkdir filecoin-work
 cd filecoin-work
 
 sudo apt install -y mesa-opencl-icd ocl-icd-opencl-dev gcc git bzr jq pkg-config curl clang build-essential hwloc libhwloc-dev wget -y && sudo apt upgrade -y
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > install_rust.sh
+chmod 755 install_rust.sh
+./install_rust.sh -y
 wget -c https://golang.org/dl/go1.17.9.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local
 echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
 source ~/.bashrc
