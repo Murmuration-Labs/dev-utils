@@ -22,4 +22,4 @@ source ~/.bashrc
 
 git clone https://github.com/filecoin-project/lotus.git
 cd lotus
-git checkout v1.15.3-rc1
+git checkout v1.13.1
