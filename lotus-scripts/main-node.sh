@@ -1,9 +1,9 @@
 #!/bin/sh
 
-cd ~/filecoin-work/lotus-local-net
+cd ~/filecoin-work/lotus
 
-export LOTUS_PATH=~/.lotus-local-net
-export LOTUS_MINER_PATH=~/.lotus-miner-local-net
+export LOTUS_PATH=~/.lotusDevnet
+export LOTUS_MINER_PATH=~/.lotusminerDevnet
 export LOTUS_SKIP_GENESIS_CHECK=_yes_
 export CGO_CFLAGS_ALLOW="-D__BLST_PORTABLE__"
 export CGO_CFLAGS="-D__BLST_PORTABLE__"
@@ -16,3 +16,5 @@ make 2k
 
 # start the node daemon
 ./lotus daemon --lotus-make-genesis=devgen.car --genesis-template=localnet.json --bootstrap=false
+
+#tmux new-window -t lotus:1 -n daemon -d ./lotus daemon --lotus-make-genesis=devgen.car --genesis-template=localnet.json --bootstrap=false
