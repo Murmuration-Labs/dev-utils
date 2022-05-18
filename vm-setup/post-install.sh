@@ -69,6 +69,7 @@ python3.9 -m pip install typer
 
 export LOTUS_PATH=~/.lotusDevnet
 export LOTUS_MINER_PATH=~/.lotusminerDevnet
+export PATH=$PATH:/usr/local/go/bin
 
 #bitscreen-cli auth login
 bitscreen-cli setup install --cli=1 --key=$1
