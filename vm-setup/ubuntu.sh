@@ -44,6 +44,8 @@ sudo apt install -y python3.9-venv
 python3.9 -m pip install --user virtualenv
 
 cd
+git clone https://github.com/keyko-io/dev-utils.git
+
 mkdir filecoin-work
 cd filecoin-work
 
