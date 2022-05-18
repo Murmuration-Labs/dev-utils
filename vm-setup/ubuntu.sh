@@ -36,6 +36,8 @@ sudo apt-get install -y google-cloud-sdk
 #-----------------------------------------------------------#
 # setup python
 
+su samer
+
 cd ~/
 git clone https://github.com/keyko-io/dev-utils.git
 
