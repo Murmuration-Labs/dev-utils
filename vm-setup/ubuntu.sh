@@ -33,3 +33,4 @@ curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyr
 sudo apt-get update
 sudo apt-get install -y google-cloud-sdk
 
+git clone https://github.com/keyko-io/dev-utils.git /dev-utils

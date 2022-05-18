@@ -1,5 +1,12 @@
 #!/bin/bash
 
+sleep 300
+echo '############################'
+echo 'Starting post script: installing lotus, go, and setting up python libraries.'
+echo '############################'
+
+sudo mv /dev-utils ~/dev-utils
+
 # setup python
 sudo apt install -y libzmq3-dev
 
@@ -52,3 +59,16 @@ sleep 10
 
 tmux new-window -t lotus:2 -n miner -d ./lotus-miner run --nosync
 
+cd ~/filecoin-work/
+python3.9 -m venv venv
+source venv/bin/activate
+
+python3.9 -m pip install bitscreen-cli
+python3.9 -m pip uninstall typer
+python3.9 -m pip install typer
+
+export LOTUS_PATH=~/.lotusDevnet
+export LOTUS_MINER_PATH=~/.lotusminerDevnet
+
+#bitscreen-cli auth login
+bitscreen-cli setup install --cli=1 --key=$1
