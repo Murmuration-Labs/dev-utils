@@ -53,8 +53,8 @@ chmod 755 install_rust.sh
 ./install_rust.sh -y
 wget -c https://golang.org/dl/go1.17.9.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local
 echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
-#export PATH=$PATH:/usr/local/go/bin
-source ~/.bashrc
+export PATH=$PATH:/usr/local/go/bin
+#source ~/.bashrc
 
 git clone https://github.com/filecoin-project/lotus.git
 cd lotus
