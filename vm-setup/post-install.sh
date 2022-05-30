@@ -10,6 +10,7 @@ sudo mv /dev-utils ~/dev-utils
 # setup python
 sudo apt install -y libzmq3-dev
 
+sudo apt install -y python3.9
 sudo apt-get install -y python3-pip
 sudo apt-get install -y python3.9-dev
 
@@ -29,17 +30,23 @@ chmod 755 install_rust.sh
 wget -c https://golang.org/dl/go1.17.9.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local
 echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
 export PATH=$PATH:/usr/local/go/bin
-#source ~/.bashrc
 
 git clone https://github.com/filecoin-project/lotus.git
 cd lotus
 git checkout v1.13.1
 
-export LOTUS_PATH=~/.lotusDevnet
-export LOTUS_MINER_PATH=~/.lotusminerDevnet
-export LOTUS_SKIP_GENESIS_CHECK=_yes_
-export CGO_CFLAGS_ALLOW="-D__BLST_PORTABLE__"
-export CGO_CFLAGS="-D__BLST_PORTABLE__"
+#export LOTUS_PATH=~/.lotusDevnet
+#export LOTUS_MINER_PATH=~/.lotusminerDevnet
+#export LOTUS_SKIP_GENESIS_CHECK=_yes_
+#export CGO_CFLAGS_ALLOW="-D__BLST_PORTABLE__"
+#export CGO_CFLAGS="-D__BLST_PORTABLE__"
+echo 'export LOTUS_PATH=~/.lotusDevnet' >> ~/.bashrc
+echo 'export LOTUS_MINER_PATH=~/.lotusminerDevnet' >> ~/.bashrc
+echo 'export LOTUS_SKIP_GENESIS_CHECK=_yes_' >> ~/.bashrc
+echo 'export CGO_CFLAGS_ALLOW="-D__BLST_PORTABLE__"' >> ~/.bashrc
+echo 'export CGO_CFLAGS="-D__BLST_PORTABLE__"' >> ~/.bashrc
+
+source ~/.bashrc
 
 make 2k
 ./lotus fetch-params 2048
@@ -59,6 +66,7 @@ sleep 10
 
 tmux new-window -t lotus:2 -n miner -d ./lotus-miner run --nosync
 
+# BITSCREEN setup -------------------------------#
 cd ~/filecoin-work/
 python3.9 -m venv venv
 source venv/bin/activate
@@ -73,3 +81,5 @@ export PATH=$PATH:/usr/local/go/bin
 
 #bitscreen-cli auth login
 bitscreen-cli setup install --cli=1 --key=$1
+
+#deactivate

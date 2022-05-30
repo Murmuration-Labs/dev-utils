@@ -25,7 +25,8 @@ Submit storage deal, use the CID from the import step
 ./lotus client deal CID t01000 0.000000005 518400
 
 View deals here
-./lotus client list-deals
+./lotus client list-deals -v
+
 
 Check the miner's pending-publish deals
 ./lotus-miner storage-deals pending-publish
